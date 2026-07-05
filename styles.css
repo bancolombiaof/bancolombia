@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #ffffff;
+    /* REEMPLAZA EL NOMBRE POR EL DE TU ARCHIVO DE FONDO */
+    background-image: url('imagen\ fondo\ bancolombia.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-container {
+    width: 400px;
+    text-align: center;
+}
+
+.logo { width: 200px; margin-bottom: 20px; }
+
+.info-box {
+    background-color: #e1f5fe;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #f7d545;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+.small-link { font-size: 12px; color: #007bff; display: block; margin-bottom: 10px; }
+.link-crear { font-weight: bold; color: #333; }

